@@ -158,7 +158,6 @@ export class HomeService {
   }
 
   async getRealtorByHomeId(id: number) {
-    console.log('comes here');
     const home = await this.prismaService.home.findUnique({
       where: {
         id,
@@ -178,7 +177,6 @@ export class HomeService {
     if (!home) {
       throw new NotFoundException();
     }
-    console.log('home', home);
     return home.realtor;
   }
 }
