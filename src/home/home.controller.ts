@@ -49,12 +49,11 @@ export class HomeController {
   //   return this.homeService.getHomeById(id);
   // }
 
-  @Roles(UserType.REALTOR, UserType.ADMIN)
+  @Roles(UserType.REALTOR)
   @UseGuards(AuthGuard)
   @Post()
   createHome(@Body() body: CreateHomeDto, @User() user: UserInfo) {
-    // return this.homeService.createHome(body, user.id);
-    return 'created home';
+    return this.homeService.createHome(body, user.id);
   }
 
   @Put(':id')
