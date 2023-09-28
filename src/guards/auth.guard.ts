@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
       context.getClass(),
     ]);
 
-    if (roles.length) {
+    if (roles?.length) {
       // grab the jwt from the request header and verify it
       const request = context.switchToHttp().getRequest();
       const token = request.headers?.authorization?.split('Bearer ')[1];
@@ -38,7 +38,6 @@ export class AuthGuard implements CanActivate {
             id: payload.id,
           },
         });
-
         if (!user) return false;
         if (roles.includes(user.user_type)) {
           return true;
